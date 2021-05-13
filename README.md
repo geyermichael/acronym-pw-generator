@@ -4,6 +4,8 @@ Generiert ein Passwort aus einem gegebenen Zitat.
 Dabei werden die Anfangsbuchstaben der einzelnen Wörter aneinandergereit.
 Sonderzeichen werden ebenfalls an der entsprechenden Stelle übernommen.
 
+## Character Replacement
+
 Es können zudem definierte Zeichen durch Zahlen erstetzt werden.
 
 const numRepObj = {
