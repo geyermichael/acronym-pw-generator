@@ -16,8 +16,11 @@ const pwOutput = document.querySelector("#pw-output");
  *
  */
 function generatePassword() {
-  // take the given phrase and create an array 'words' out of it
-  let phrase = inputPhrase.value;
+  // take the given phrase and trim it
+  let phrase = inputPhrase.value.trim();
+  // set value of phrase input to timmed phrase
+  inputPhrase.value = phrase;
+  // split phrase into words
   let words = phrase.split(" ");
 
   // push every first letter and every special char into an array 'pw'
