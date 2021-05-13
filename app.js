@@ -3,7 +3,7 @@
  *
  * @description Take a given phrase and generate a password.
  * @author Michael Geyer
- * @version 1.0.0
+ * @version 1.0.1
  *
  * *****
  * 1) GLOBAL VARIABLES
@@ -37,6 +37,7 @@ const numRepObj = {
 const specCharRepObj = {
   u: "_",
   h: "-",
+  a: "@",
 };
 
 /****************************************
@@ -80,8 +81,6 @@ function generatePassword() {
 
     // replace numbers in given numRepObj
     if (cbNumbers.checked) {
-      console.log("numbers is checked");
-      console.log(word);
       for (let i = 0; i < word.length; i++) {
         if (word[i] in numRepObj) word[i] = numRepObj[word[i]];
       }
@@ -89,8 +88,6 @@ function generatePassword() {
 
     // replace specCharacters in given specCharRepObj
     if (cbSpecChars.checked) {
-      console.log("spec chars is checked");
-      console.log(word);
       for (let i = 0; i < word.length; i++) {
         if (word[i] in specCharRepObj) word[i] = specCharRepObj[word[i]];
       }

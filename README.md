@@ -28,5 +28,6 @@ werden, welche sich in der Regel nicht in Zitaten finden lassen.
 const specCharRepObj = {
   u: "_",
   h: "-",
+  a: "@",
 };
 ```

@@ -9,6 +9,7 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+    <h1>Acronym Quote Password Generator</h1>
     <textarea
       id="quote"
       name="quote"
@@ -17,15 +18,18 @@
       rows="5"
       placeholder="Insert your quote..."
     ></textarea>
-    <label>
-      <input id="cb-numbers" type="checkbox" value="numbers" />Numbers
-    </label>
-    <label>
-      <input id="cb-spec-chars" type="checkbox" value="numbers" />Additonal
-      special characters
-    </label>
+    <div id="options">
+      <label>
+        <input id="cb-numbers" type="checkbox" value="numbers" />Add Numbers
+      </label>
+      <label>
+        <input id="cb-spec-chars" type="checkbox" value="numbers" />Activate
+        special characters
+      </label>
+    </div>
     <button id="btn-reset">Reset</button>
     <button id="btn-generate">Generate</button>
     <input id="pw-output" type="text" />
+    <p>v1.0.0</p>
   </body>
 </html>
