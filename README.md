@@ -6,22 +6,27 @@ Sonderzeichen werden ebenfalls an der entsprechenden Stelle übernommen.
 
 ## Character Replacement
 
-Es können zudem definierte Zeichen durch Zahlen erstetzt werden.
+Es können definierte Zeichen (s. numRepObj) durch entsprechende Zahlen erstetzt werden.
 
+```javascript
 const numRepObj = {
-g: "9",
-G: "9",
-i: "1",
-I: "1",
-o: "0",
-O: "0",
-x: "10",
-X: "10",
+  g: "9",
+  G: "9",
+  i: "1",
+  I: "1",
+  o: "0",
+  O: "0",
+  x: "10",
+  X: "10",
 };
+```
 
-Auch entsprechend definierte Zeichen können durch erweiterete Sonderzeichen ersetzt werden.
+Zudem können definierte Zeichen (s. specCharRepObj) durch erweiterete Sonderzeichen ersetzt
+werden, welche sich in der Regel nicht in Zitaten finden lassen.
 
+```javascript
 const specCharRepObj = {
-u: "\_",
-h: "-",
+  u: "_",
+  h: "-",
 };
+```

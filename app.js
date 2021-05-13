@@ -22,6 +22,7 @@ const cbSpecChars = document.querySelector("#cb-spec-chars");
 const btnGenerate = document.querySelector("#btn-generate");
 const btnReset = document.querySelector("#btn-reset");
 
+// Replacement Object for numbers and additional special characters
 const numRepObj = {
   g: "9",
   G: "9",
