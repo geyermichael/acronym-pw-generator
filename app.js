@@ -3,7 +3,7 @@
  *
  * @description Take a given phrase and generate a password.
  * @author Michael Geyer
- * @version 1.0.1
+ * @version 1.0.2
  *
  * *****
  * 1) GLOBAL VARIABLES
@@ -21,6 +21,8 @@ const cbNumbers = document.querySelector("#cb-numbers");
 const cbSpecChars = document.querySelector("#cb-spec-chars");
 const btnGenerate = document.querySelector("#btn-generate");
 const btnReset = document.querySelector("#btn-reset");
+const btnCheckPw = document.querySelector("#btn-check-pw");
+const pwCheck = document.querySelector("#pw-check");
 
 // Replacement Object for numbers and additional special characters
 const numRepObj = {
@@ -105,6 +107,9 @@ function generatePassword() {
 
   // output the generate password on the frontend element
   pwOutput.value = pw;
+  //   checkPassword(pw);
+  //   btnCheckPw.style.display = "block";
+  btnReset.style.display = "block";
 }
 
 /**
@@ -114,6 +119,69 @@ function generatePassword() {
 function resetGenerator() {
   inputQuote.value = "";
   pwOutput.value = "";
+  btnCheckPw.style.display = "none";
+  pwCheck.style.display = "none";
+  btnReset.style.display = "none";
+  toggleBtnGenerate();
+}
+
+/**
+ * @function checkPassword
+ *
+ * @param pw
+ * @description simple string check for given password
+ *
+ */
+/* TODO: finish checkPassword
+function checkPassword(pw) {
+  // check if pw is defined
+  if (!pw) return;
+
+  const regexSpecChar = new RegExp(/[^a-zA-Z0-9]/g);
+  const regexNums = new RegExp(/[0-9]/g);
+  const simplePwSecurity = {
+    low: `
+        <p>Your password is not good 😕</p>
+        `,
+    medium: `
+        <p>Your password is good 🙂 </p>
+        `,
+    high: `
+        <p>Your password is great 🤩</p>
+        `,
+  };
+
+  pwCheck.style.display = "block";
+
+  console.log(pw);
+  console.log(pw.length);
+  console.log(regexSpecChar.test(pw));
+  console.log(regexNums.test(pw));
+
+  if (pw.length < 10) pwCheck.innerHTML = simplePwSecurity.low;
+  if (pw.length > 10) pwCheck.innerHTML = simplePwSecurity.medium;
+  if (pw.length > 10) {
+    if (
+      (!regexSpecChar.test(pw) && regexNums.test(pw)) ||
+      (regexSpecChar.test(pw) && !regexNums.test(pw))
+    )
+      pwCheck.innerHTML = simplePwSecurity.medium;
+  }
+  if (pw.length > 10 && regexSpecChar.test(pw) && regexNums.test(pw))
+    pwCheck.innerHTML = simplePwSecurity.high;
+}
+*/
+
+/**
+ * @function toggleBtnGenerate
+ *
+ */
+function toggleBtnGenerate() {
+  if (inputQuote.value == "") {
+    btnGenerate.disabled = true;
+    return;
+  }
+  btnGenerate.disabled = false;
 }
 
 /****************************************
@@ -122,4 +190,6 @@ function resetGenerator() {
  */
 
 btnGenerate.addEventListener("click", generatePassword);
+inputQuote.addEventListener("keyup", toggleBtnGenerate);
 btnReset.addEventListener("click", resetGenerator);
+btnCheckPw.addEventListener("click", () => checkPassword(pwOutput.value));

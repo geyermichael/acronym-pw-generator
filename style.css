@@ -5,6 +5,10 @@ body {
   justify-content: center;
 }
 
+#pw-output {
+  margin: 1rem 0;
+}
+
 #quote {
   margin: 2rem 0;
 }
