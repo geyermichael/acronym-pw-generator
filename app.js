@@ -16,12 +16,23 @@
  *
  */
 const inputQuote = document.querySelector("#quote");
+const pwOutput = document.querySelector("#pw-output");
+const cbNumbers = document.querySelector("#cb-numbers");
 const btnGenerate = document.querySelector("#btn-generate");
 const btnReset = document.querySelector("#btn-reset");
-const pwOutput = document.querySelector("#pw-output");
+
+const numRepObj = {
+  g: "9",
+  i: "1",
+  O: "0",
+  X: "10",
+};
 
 /****************************************
  * FUNCTIONS
+ *
+ * @see generatePassword
+ * @see resetGenerator
  *
  */
 
@@ -55,6 +66,14 @@ function generatePassword() {
 
     // split the word, without special character, to create an array
     word = word.split("");
+
+    if (cbNumbers.checked) {
+      console.log("numbers is checked");
+      console.log(word);
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] in numRepObj) word[i] = numRepObj[word[i]];
+      }
+    }
 
     // push the first letter of the given word to the pw array
     pw.push(word[0]);
