@@ -7,21 +7,25 @@
  */
 
 // GLOBAL VARIABLES
-const inputPhrase = document.querySelector("#phrase");
+const inputQuote = document.querySelector("#quote");
 const btnGenerate = document.querySelector("#btn-generate");
+const btnReset = document.querySelector("#btn-reset");
 const pwOutput = document.querySelector("#pw-output");
+
+// FUNCTIONS
 
 /**
  * @function generatePassword
  *
  */
 function generatePassword() {
-  // take the given phrase and trim it
-  let phrase = inputPhrase.value.trim();
-  // set value of phrase input to timmed phrase
-  inputPhrase.value = phrase;
-  // split phrase into words
-  let words = phrase.split(" ");
+  // take the given phrase remove text wrap (new line) and trim it
+  let quote = inputQuote.value.replaceAll("\n", " ");
+  quote.trim();
+  // set value of quote input to timmed quote
+  inputQuote.value = quote;
+  // split quote into words
+  let words = quote.split(" ");
 
   // push every first letter and every special char into an array 'pw'
   let pw = [];
@@ -55,4 +59,12 @@ function generatePassword() {
   pwOutput.value = pw;
 }
 
+function resetGenerator() {
+  inputQuote.value = "";
+  pwOutput.value = "";
+}
+
+// EVENTS
+
 btnGenerate.addEventListener("click", generatePassword);
+btnReset.addEventListener("click", resetGenerator);

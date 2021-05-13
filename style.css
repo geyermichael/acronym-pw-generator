@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#quote {
+  margin: 2rem 0;
+}
+
+#btn-generate {
+  margin: 0.5rem 0;
+}
