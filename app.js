@@ -18,14 +18,24 @@
 const inputQuote = document.querySelector("#quote");
 const pwOutput = document.querySelector("#pw-output");
 const cbNumbers = document.querySelector("#cb-numbers");
+const cbSpecChars = document.querySelector("#cb-spec-chars");
 const btnGenerate = document.querySelector("#btn-generate");
 const btnReset = document.querySelector("#btn-reset");
 
 const numRepObj = {
   g: "9",
+  G: "9",
   i: "1",
+  I: "1",
+  o: "0",
   O: "0",
+  x: "10",
   X: "10",
+};
+
+const specCharRepObj = {
+  u: "_",
+  h: "-",
 };
 
 /****************************************
@@ -67,11 +77,21 @@ function generatePassword() {
     // split the word, without special character, to create an array
     word = word.split("");
 
+    // replace numbers in given numRepObj
     if (cbNumbers.checked) {
       console.log("numbers is checked");
       console.log(word);
       for (let i = 0; i < word.length; i++) {
         if (word[i] in numRepObj) word[i] = numRepObj[word[i]];
+      }
+    }
+
+    // replace specCharacters in given specCharRepObj
+    if (cbSpecChars.checked) {
+      console.log("spec chars is checked");
+      console.log(word);
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] in specCharRepObj) word[i] = specCharRepObj[word[i]];
       }
     }
 
