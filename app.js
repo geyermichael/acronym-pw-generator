@@ -4,15 +4,26 @@
  * @description Take a given phrase and generate a password.
  * @author Michael Geyer
  * @version 1.0.0
+ *
+ * *****
+ * 1) GLOBAL VARIABLES
+ * 2) FUNCTIONS
+ * 3) EVENTS
  */
 
-// GLOBAL VARIABLES
+/****************************************
+ * GLOBAL VARIABLES
+ *
+ */
 const inputQuote = document.querySelector("#quote");
 const btnGenerate = document.querySelector("#btn-generate");
 const btnReset = document.querySelector("#btn-reset");
 const pwOutput = document.querySelector("#pw-output");
 
-// FUNCTIONS
+/****************************************
+ * FUNCTIONS
+ *
+ */
 
 /**
  * @function generatePassword
@@ -59,12 +70,19 @@ function generatePassword() {
   pwOutput.value = pw;
 }
 
+/**
+ * @function resetGenerator
+ *
+ */
 function resetGenerator() {
   inputQuote.value = "";
   pwOutput.value = "";
 }
 
-// EVENTS
+/****************************************
+ * EVENTS
+ *
+ */
 
 btnGenerate.addEventListener("click", generatePassword);
 btnReset.addEventListener("click", resetGenerator);
