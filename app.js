@@ -57,7 +57,7 @@ const specCharRepObj = {
 function generatePassword() {
   // take the given phrase remove text wrap (new line) and trim it
   let quote = inputQuote.value.replaceAll("\n", " ");
-  quote.trim();
+  quote = quote.trim();
   // set value of quote input to timmed quote
   inputQuote.value = quote;
   // split quote into words
@@ -107,8 +107,8 @@ function generatePassword() {
 
   // output the generate password on the frontend element
   pwOutput.value = pw;
-  //   checkPassword(pw);
-  //   btnCheckPw.style.display = "block";
+  checkPassword(pw);
+  btnCheckPw.style.display = "block";
   btnReset.style.display = "block";
 }
 
@@ -132,7 +132,7 @@ function resetGenerator() {
  * @description simple string check for given password
  *
  */
-/* TODO: finish checkPassword
+
 function checkPassword(pw) {
   // check if pw is defined
   if (!pw) return;
@@ -170,7 +170,6 @@ function checkPassword(pw) {
   if (pw.length > 10 && regexSpecChar.test(pw) && regexNums.test(pw))
     pwCheck.innerHTML = simplePwSecurity.high;
 }
-*/
 
 /**
  * @function toggleBtnGenerate
