@@ -67,7 +67,7 @@ function generatePassword() {
   let pw = [];
   words.forEach((word) => {
     // using regex to find special characters at the end of word
-    const regex = new RegExp(/\W$/g);
+    const regex = new RegExp(/[^a-zA-Z0-9ß-ü]$/g);
     let specChar = [];
 
     // special characters are always at the end of a give word
@@ -137,38 +137,32 @@ function checkPassword(pw) {
   // check if pw is defined
   if (!pw) return;
 
-  const regexSpecChar = new RegExp(/[^a-zA-Z0-9]/g);
-  const regexNums = new RegExp(/[0-9]/g);
+  // regex for at least one special character
+  const regexSpecChar = new RegExp(/[^a-zA-Z0-9ß-ü]/);
+  // regex for at least one number
+  const regexNums = new RegExp(/[0-9]/);
+
+  // simple object for the frontend check restult
   const simplePwSecurity = {
-    low: `
-        <p>Your password is not good 😕</p>
-        `,
-    medium: `
-        <p>Your password is good 🙂 </p>
-        `,
-    high: `
-        <p>Your password is great 🤩</p>
-        `,
+    low: "<p>Your password is not good 😕</p>",
+    medium: "<p>Your password is good 🙂 </p>",
+    high: "<p>Your password is great 🤩</p>",
   };
 
+  // show pwCheck <div> on frontend
   pwCheck.style.display = "block";
 
-  console.log(pw);
-  console.log(pw.length);
-  console.log(regexSpecChar.test(pw));
-  console.log(regexNums.test(pw));
-
-  if (pw.length < 10) pwCheck.innerHTML = simplePwSecurity.low;
-  if (pw.length > 10) pwCheck.innerHTML = simplePwSecurity.medium;
-  if (pw.length > 10) {
-    if (
-      (!regexSpecChar.test(pw) && regexNums.test(pw)) ||
-      (regexSpecChar.test(pw) && !regexNums.test(pw))
-    )
-      pwCheck.innerHTML = simplePwSecurity.medium;
+  // check the given password
+  // less than 10 characters -> "not good"
+  // 10 or more characters -> "good"
+  // 10 or more characters and a numbers as well as a special character -> "great"
+  pwCheck.innerHTML = simplePwSecurity.medium;
+  if (pw.length < 10) {
+    pwCheck.innerHTML = simplePwSecurity.low;
   }
-  if (pw.length > 10 && regexSpecChar.test(pw) && regexNums.test(pw))
+  if (pw.length >= 10 && regexSpecChar.test(pw) && regexNums.test(pw)) {
     pwCheck.innerHTML = simplePwSecurity.high;
+  }
 }
 
 /**
